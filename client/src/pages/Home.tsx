@@ -66,26 +66,24 @@ export default function Home() {
       </div>
 
       <div className="space-y-6 sm:space-y-8">
-        <motion.section
-          key={trump}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25 }}
-          className="bg-amber-50/60 border border-amber-200/60 rounded-xl p-4 sm:p-6"
-          data-testid="section-trump"
-        >
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base sm:text-lg font-display font-bold text-slate-900 flex items-center gap-2">
-              <span className={getSuitColor(trump) === 'red' ? 'text-suit-red' : 'text-suit-black'}>
-                {getSuitSymbol(trump)}
-              </span>
-              Trump
-            </h2>
-            <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium">
+        <section data-testid="section-trump">
+          <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4 flex items-center gap-2">
+            <span className={getSuitColor(trump) === 'red' ? 'text-suit-red' : 'text-suit-black'}>
+              {getSuitSymbol(trump)}
+            </span>
+            Trump
+            <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium ml-auto">
               High to Low
             </span>
-          </div>
+          </h2>
 
+          <motion.div
+            key={trump}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="bg-amber-50/60 border border-amber-200/60 rounded-xl p-4 sm:p-6"
+          >
           <div className="grid gap-y-0" style={{ gridTemplateColumns: `repeat(${rankings.trumpCards.length}, minmax(0, 1fr))` }}>
             {rankings.trumpCards.map((card, idx) => (
               <div key={card.id} className="flex flex-col items-center gap-0.5" data-testid={`card-trump-${idx}`}>
@@ -100,7 +98,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </motion.section>
+          </motion.div>
+        </section>
 
         <section data-testid="section-offsuits">
           <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4">
