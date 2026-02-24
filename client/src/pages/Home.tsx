@@ -32,7 +32,7 @@ export default function Home() {
       </header>
 
       <div className="flex justify-center mb-6 sm:mb-10">
-        <div className="inline-flex bg-white/80 backdrop-blur-md p-1 sm:p-1.5 rounded-xl sm:rounded-2xl shadow-sm border border-slate-200/60 gap-0.5 sm:gap-1">
+        <div className="inline-flex bg-white p-1 sm:p-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200 gap-1 sm:gap-1.5">
           {SUITS.map((suit) => {
             const isActive = suit === trump;
             const isRed = getSuitColor(suit) === "red";
@@ -46,9 +46,12 @@ export default function Home() {
                 className={`
                   relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl flex items-center gap-1.5
                   transition-all duration-200 outline-none font-display font-bold text-base sm:text-lg
+                  cursor-pointer select-none
                   ${isActive
-                    ? (isRed ? 'text-suit-red bg-red-50 border border-red-100' : 'text-suit-black bg-slate-100 border border-slate-200')
-                    : 'text-slate-400 hover:text-slate-600 border border-transparent'}
+                    ? (isRed
+                        ? 'text-white bg-rose-500 shadow-sm border border-rose-400'
+                        : 'text-white bg-slate-700 shadow-sm border border-slate-600')
+                    : 'text-slate-400 border border-slate-100 hover:border-slate-300 hover:text-slate-600 hover:bg-slate-50 active:bg-slate-100'}
                 `}
               >
                 <span className="text-lg sm:text-xl">{symbol}</span>
