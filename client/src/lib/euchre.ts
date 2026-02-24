@@ -17,6 +17,15 @@ export function getSuitColor(suit: Suit): 'red' | 'black' {
   return suit === 'Hearts' || suit === 'Diamonds' ? 'red' : 'black';
 }
 
+export function getSuitSymbol(suit: Suit): string {
+  switch (suit) {
+    case 'Hearts': return '\u2665';
+    case 'Diamonds': return '\u2666';
+    case 'Clubs': return '\u2663';
+    case 'Spades': return '\u2660';
+  }
+}
+
 export function getLeftSuit(suit: Suit): Suit {
   switch (suit) {
     case 'Hearts': return 'Diamonds';
