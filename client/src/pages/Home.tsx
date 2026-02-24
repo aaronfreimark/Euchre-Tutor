@@ -155,7 +155,7 @@ export default function Home() {
 
       <div className="mt-6 sm:mt-8 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-center">
         <p className="text-sm sm:text-base text-amber-800 font-medium">
-          Remember to always play the suit of the lead card when possible.
+          You must follow the lead suit if you can.
         </p>
       </div>
     </div>
