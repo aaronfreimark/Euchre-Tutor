@@ -85,8 +85,8 @@ export default function Home() {
               <div key={card.id} className="flex flex-col items-center gap-0.5" data-testid={`card-trump-${idx}`}>
                 <CardChip card={card} />
                 {card.bower ? (
-                  <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wide ${card.bower === 'Right' ? 'text-amber-500' : 'text-slate-400'}`}>
-                    {card.bower}
+                  <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-center leading-tight ${card.bower === 'Right' ? 'text-amber-500' : 'text-slate-400'}`}>
+                    {card.bower}<br />Bower
                   </span>
                 ) : (
                   <span className="text-[10px] sm:text-xs invisible">-</span>
