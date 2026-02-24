@@ -47,10 +47,10 @@
   body {
     @apply text-foreground antialiased;
     font-family: var(--font-sans);
-    background-color: hsl(145, 30%, 92%);
+    background-color: hsl(148, 40%, 22%);
     background-image:
-      radial-gradient(ellipse at 30% 0%, hsl(145, 35%, 88%) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 100%, hsl(160, 25%, 90%) 0%, transparent 60%);
+      radial-gradient(ellipse at 30% 0%, hsl(148, 45%, 28%) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 100%, hsl(155, 35%, 18%) 0%, transparent 60%);
     background-attachment: fixed;
   }
 

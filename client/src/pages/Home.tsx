@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="min-h-screen px-4 sm:px-6 py-6 sm:py-10 max-w-2xl mx-auto">
       <header className="text-center mb-4 sm:mb-6">
-        <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-slate-900">
+        <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-white">
           Euchre Card Rankings
         </h1>
       </header>
@@ -59,16 +59,16 @@ export default function Home() {
             );
           })}
         </div>
-        <p className="text-slate-500 text-xs sm:text-sm">
+        <p className="text-emerald-200/70 text-xs sm:text-sm">
           Select trump to see how rankings change
         </p>
       </div>
 
       <div className="space-y-6 sm:space-y-8">
         <section data-testid="section-trump">
-          <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4 flex items-center gap-2">
+          <h2 className="text-base sm:text-lg font-display font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
             Trump
-            <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium ml-auto">
+            <span className="text-[10px] sm:text-xs text-emerald-300/60 uppercase tracking-wider font-medium ml-auto">
               High to Low
             </span>
           </h2>
@@ -78,7 +78,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25 }}
-            className="bg-amber-50/60 border border-amber-200/60 rounded-xl p-4 sm:p-6"
+            className="bg-amber-50/80 border border-amber-200/60 rounded-xl p-4 sm:p-6"
           >
           <div className="grid gap-y-0" style={{ gridTemplateColumns: `repeat(${rankings.trumpCards.length}, minmax(0, 1fr))` }}>
             {rankings.trumpCards.map((card, idx) => (
@@ -105,11 +105,11 @@ export default function Home() {
         </section>
 
         <section data-testid="section-offsuits">
-          <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4">
+          <h2 className="text-base sm:text-lg font-display font-bold text-white mb-3 sm:mb-4">
             Off-Suits
           </h2>
 
-          <div className="bg-white/50 border border-slate-200/60 rounded-xl p-3 sm:p-5">
+          <div className="bg-white/80 border border-slate-200/60 rounded-xl p-3 sm:p-5">
             {(() => {
               const offRanks: Rank[] = ['A', 'K', 'Q', 'J', '10', '9'];
               const leftSuit = rankings.offSuits.find(os => os.cards.length === 5)?.suit;
@@ -150,8 +150,8 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="mt-6 sm:mt-8 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-center">
-        <p className="text-sm sm:text-base text-amber-800 font-medium">
+      <div className="mt-6 sm:mt-8 bg-emerald-900/40 border border-emerald-600/30 rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-center">
+        <p className="text-sm sm:text-base text-emerald-200 font-medium">
           You must follow the lead suit if you can.
         </p>
       </div>
