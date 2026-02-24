@@ -2,38 +2,14 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { SUITS, type Suit, type Rank, getRankings, getSuitColor, getSuitSymbol } from "@/lib/euchre";
 import type { CardDef } from "@/lib/euchre";
-import { Crown, Star } from "lucide-react";
-
 function CardChip({ card }: { card: CardDef }) {
   const isRed = card.color === 'red';
   const symbol = getSuitSymbol(card.suit);
 
-  if (card.bower) {
-    const isRight = card.bower === 'Right';
-    return (
-      <span
-        className={`
-          inline-flex items-center gap-1 px-2.5 py-1 rounded-md font-bold text-sm sm:text-base
-          border shadow-sm
-          ${isRight
-            ? 'bg-gradient-to-r from-amber-50 to-yellow-50 border-amber-300 text-amber-900'
-            : 'bg-gradient-to-r from-slate-50 to-slate-100 border-slate-300 text-slate-800'}
-        `}
-        data-testid={`chip-${card.bower.toLowerCase()}-bower`}
-      >
-        {isRight && <Crown className="w-3.5 h-3.5 text-amber-500" />}
-        {!isRight && <Star className="w-3.5 h-3.5 text-slate-400" />}
-        <span className={isRed ? 'text-suit-red' : 'text-suit-black'}>{symbol}</span>{card.rank}
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide opacity-60 ml-0.5">
-          {card.bower}
-        </span>
-      </span>
-    );
-  }
-
   return (
     <span
       className={`inline-flex items-center text-sm sm:text-base font-semibold ${isRed ? 'text-suit-red' : 'text-suit-black'}`}
+      data-testid={card.bower ? `chip-${card.bower.toLowerCase()}-bower` : undefined}
     >
       {symbol}{card.rank}
     </span>
@@ -104,14 +80,18 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2">
+          <div className="grid gap-y-0" style={{ gridTemplateColumns: `repeat(${rankings.trumpCards.length}, minmax(0, 1fr))` }}>
             {rankings.trumpCards.map((card, idx) => (
-              <span key={card.id} className="flex items-center gap-1.5 sm:gap-2" data-testid={`card-trump-${idx}`}>
+              <div key={card.id} className="flex flex-col items-center gap-0.5" data-testid={`card-trump-${idx}`}>
                 <CardChip card={card} />
-                {idx < rankings.trumpCards.length - 1 && (
-                  <span className="text-slate-300 text-xs select-none">&gt;</span>
+                {card.bower ? (
+                  <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wide ${card.bower === 'Right' ? 'text-amber-500' : 'text-slate-400'}`}>
+                    {card.bower}
+                  </span>
+                ) : (
+                  <span className="text-[10px] sm:text-xs invisible">-</span>
                 )}
-              </span>
+              </div>
             ))}
           </div>
         </motion.section>
