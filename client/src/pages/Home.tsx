@@ -23,16 +23,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-6 sm:py-10 max-w-2xl mx-auto">
-      <header className="text-center mb-6 sm:mb-8">
+      <header className="text-center mb-4 sm:mb-6">
         <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-slate-900">
           Euchre Card Rankings
         </h1>
-        <p className="text-slate-500 text-xs sm:text-sm mt-1">
-          Select trump to see how rankings change
-        </p>
       </header>
 
-      <div className="flex justify-center mb-6 sm:mb-10">
+      <div className="flex flex-col items-center mb-6 sm:mb-10 gap-2">
         <div className="inline-flex bg-white p-1 sm:p-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200 gap-1 sm:gap-1.5">
           {SUITS.map((suit) => {
             const isActive = suit === trump;
@@ -63,6 +60,9 @@ export default function Home() {
             );
           })}
         </div>
+        <p className="text-slate-500 text-xs sm:text-sm">
+          Select trump to see how rankings change
+        </p>
       </div>
 
       <div className="space-y-6 sm:space-y-8">
