@@ -2,14 +2,13 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { SUITS, type Suit, type Rank, getRankings, getSuitColor, getSuitSymbol } from "@/lib/euchre";
 import type { CardDef } from "@/lib/euchre";
-import { SuitIcon } from "@/components/SuitIcon";
 function CardChip({ card }: { card: CardDef }) {
   const isRed = card.color === 'red';
   const symbol = getSuitSymbol(card.suit);
 
   return (
     <span
-      className={`inline-flex items-center text-sm sm:text-base font-semibold ${isRed ? 'text-suit-red' : 'text-suit-black'}`}
+      className={`inline-flex items-center text-sm sm:text-base font-semibold suit-symbol ${isRed ? 'text-suit-red' : 'text-suit-black'}`}
       data-testid={card.bower ? `chip-${card.bower.toLowerCase()}-bower` : undefined}
     >
       {symbol}{card.rank}
@@ -54,7 +53,7 @@ export default function Home() {
                         : 'text-suit-black border border-slate-100 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100')}
                 `}
               >
-                <SuitIcon suit={suit} className={`w-5 h-5 sm:w-6 sm:h-6 ${isActive ? 'text-white' : ''}`} />
+                <span className={`text-lg sm:text-xl suit-symbol ${isActive ? 'text-white' : ''}`}>{getSuitSymbol(suit)}</span>
                 <span className="hidden sm:inline text-sm">{suit}</span>
               </button>
             );
@@ -68,7 +67,7 @@ export default function Home() {
       <div className="space-y-6 sm:space-y-8">
         <section data-testid="section-trump">
           <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4 flex items-center gap-2">
-            <span className={getSuitColor(trump) === 'red' ? 'text-suit-red' : 'text-suit-black'}>
+            <span className={`suit-symbol ${getSuitColor(trump) === 'red' ? 'text-suit-red' : 'text-suit-black'}`}>
               {getSuitSymbol(trump)}
             </span>
             Trump

@@ -72,4 +72,8 @@
   .bg-suit-black {
     background-color: #1E293B;
   }
+  .suit-symbol {
+    font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Noto Sans Symbols', sans-serif;
+    font-variant-emoji: text;
+  }
 }
