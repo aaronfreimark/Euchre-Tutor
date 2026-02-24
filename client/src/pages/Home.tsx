@@ -30,7 +30,7 @@ export default function Home() {
       </header>
 
       <div className="flex flex-col items-center mb-6 sm:mb-10 gap-2">
-        <div className="inline-flex bg-white p-1 sm:p-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200 gap-1 sm:gap-1.5">
+        <div className="flex w-full bg-white p-1 sm:p-1.5 rounded-xl sm:rounded-2xl shadow-md border border-slate-200 gap-1 sm:gap-1.5">
           {SUITS.map((suit) => {
             const isActive = suit === trump;
             const isRed = getSuitColor(suit) === "red";
@@ -42,7 +42,7 @@ export default function Home() {
                 data-testid={`button-suit-${suit.toLowerCase()}`}
                 onClick={() => setTrump(suit)}
                 className={`
-                  relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl flex items-center gap-1.5
+                  relative flex-1 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5
                   transition-all duration-200 outline-none font-display font-bold text-base sm:text-lg
                   cursor-pointer select-none
                   ${isActive
