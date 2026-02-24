@@ -67,9 +67,6 @@ export default function Home() {
       <div className="space-y-6 sm:space-y-8">
         <section data-testid="section-trump">
           <h2 className="text-base sm:text-lg font-display font-bold text-slate-800 mb-3 sm:mb-4 flex items-center gap-2">
-            <span className={`suit-symbol ${getSuitColor(trump) === 'red' ? 'text-suit-red' : 'text-suit-black'}`}>
-              {getSuitSymbol(trump)}
-            </span>
             Trump
             <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium ml-auto">
               High to Low
