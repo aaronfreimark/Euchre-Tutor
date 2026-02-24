@@ -86,7 +86,14 @@ export default function Home() {
           >
           <div className="grid gap-y-0" style={{ gridTemplateColumns: `repeat(${rankings.trumpCards.length}, minmax(0, 1fr))` }}>
             {rankings.trumpCards.map((card, idx) => (
-              <div key={card.id} className="flex flex-col items-center gap-0.5" data-testid={`card-trump-${idx}`}>
+              <motion.div
+                key={`${trump}-${card.id}`}
+                initial={{ opacity: 0, y: -12, scale: 0.85 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.3, delay: idx * 0.05, ease: "easeOut" }}
+                className="flex flex-col items-center gap-0.5"
+                data-testid={`card-trump-${idx}`}
+              >
                 <CardChip card={card} />
                 {card.bower ? (
                   <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-center leading-tight ${card.bower === 'Right' ? 'text-amber-500' : 'text-slate-400'}`}>
@@ -95,7 +102,7 @@ export default function Home() {
                 ) : (
                   <span className="text-[10px] sm:text-xs invisible">-</span>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
           </motion.div>
@@ -117,13 +124,17 @@ export default function Home() {
                       {rank}
                     </div>
                   ))}
-                  {rankings.offSuits.map((os) => (
-                    offRanks.map((rank) => {
+                  {rankings.offSuits.map((os, rowIdx) => (
+                    offRanks.map((rank, colIdx) => {
                       const card = os.cards.find(c => c.rank === rank);
                       const isLeftBowerHole = !card && rank === 'J' && os.suit === leftSuit;
+                      const delay = rowIdx * 0.08 + colIdx * 0.04;
                       return (
-                        <div
-                          key={`${os.suit}-${rank}`}
+                        <motion.div
+                          key={`${trump}-${os.suit}-${rank}`}
+                          initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{ duration: 0.25, delay, ease: "easeOut" }}
                           className="flex items-center justify-center py-1 sm:py-1.5"
                           data-testid={card ? `card-offsuit-${os.suit.toLowerCase()}-${rank.toLowerCase()}` : undefined}
                         >
@@ -132,7 +143,7 @@ export default function Home() {
                           ) : isLeftBowerHole ? (
                             <span className="text-[10px] sm:text-xs text-slate-300 italic">L.B.</span>
                           ) : null}
-                        </div>
+                        </motion.div>
                       );
                     })
                   ))}
