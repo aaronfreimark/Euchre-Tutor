@@ -152,6 +152,10 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      <p className="text-center text-xs sm:text-sm text-slate-400 italic mt-6 sm:mt-8">
+        Remember to always play the suit of the lead card when possible.
+      </p>
     </div>
   );
 }
