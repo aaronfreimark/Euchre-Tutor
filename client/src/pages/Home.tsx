@@ -46,14 +46,14 @@ export default function Home() {
                   cursor-pointer select-none
                   ${isActive
                     ? (isRed
-                        ? 'text-white bg-rose-500 shadow-sm border border-rose-400'
-                        : 'text-white bg-slate-700 shadow-sm border border-slate-600')
+                        ? 'text-suit-red ring-2 ring-rose-500 bg-white shadow-sm border border-transparent'
+                        : 'text-suit-black ring-2 ring-slate-700 bg-white shadow-sm border border-transparent')
                     : (isRed
-                        ? 'text-suit-red border border-slate-100 hover:border-rose-300 hover:bg-rose-50 active:bg-rose-100'
-                        : 'text-suit-black border border-slate-100 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100')}
+                        ? 'text-suit-red border border-slate-200 hover:border-rose-300 hover:bg-rose-50 active:bg-rose-100'
+                        : 'text-suit-black border border-slate-200 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100')}
                 `}
               >
-                <span className={`text-lg sm:text-xl suit-symbol ${isActive ? 'text-white' : ''}`}>{getSuitSymbol(suit)}</span>
+                <span className="text-lg sm:text-xl suit-symbol">{getSuitSymbol(suit)}</span>
                 <span className="hidden sm:inline text-sm">{suit}</span>
               </button>
             );
