@@ -129,9 +129,6 @@ export default function Home() {
                 data-testid={`section-offsuit-${os.suit.toLowerCase()}`}
               >
                 <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5">
-                  <span className={`font-display font-bold text-sm sm:text-base ${getSuitColor(os.suit) === 'red' ? 'text-suit-red' : 'text-suit-black'} min-w-[5rem] sm:min-w-[6rem]`}>
-                    {getSuitSymbol(os.suit)} {os.suit}
-                  </span>
                   {os.cards.map((card, idx) => (
                     <span key={card.id} className="flex items-center gap-1.5 sm:gap-2" data-testid={`card-offsuit-${os.suit.toLowerCase()}-${idx}`}>
                       <CardChip card={card} />
