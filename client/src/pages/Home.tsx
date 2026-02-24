@@ -51,10 +51,12 @@ export default function Home() {
                     ? (isRed
                         ? 'text-white bg-rose-500 shadow-sm border border-rose-400'
                         : 'text-white bg-slate-700 shadow-sm border border-slate-600')
-                    : 'text-slate-400 border border-slate-100 hover:border-slate-300 hover:text-slate-600 hover:bg-slate-50 active:bg-slate-100'}
+                    : (isRed
+                        ? 'text-suit-red border border-slate-100 hover:border-rose-300 hover:bg-rose-50 active:bg-rose-100'
+                        : 'text-suit-black border border-slate-100 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100')}
                 `}
               >
-                <span className="text-lg sm:text-xl">{symbol}</span>
+                <span className={`text-lg sm:text-xl ${isActive ? 'text-white' : ''}`}>{symbol}</span>
                 <span className="hidden sm:inline text-sm">{suit}</span>
               </button>
             );
