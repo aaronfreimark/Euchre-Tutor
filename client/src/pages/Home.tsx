@@ -152,6 +152,26 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      <div className="mt-8 sm:mt-12 flex justify-center gap-10 sm:gap-16" data-testid="scorecards">
+        {[
+          { label: "Us", score: 6, suit: "♥", colorClass: "text-suit-red" },
+          { label: "Them", score: 7, suit: "♠", colorClass: "text-suit-black" },
+        ].map(({ label, score, suit, colorClass }) => (
+          <div key={label} className="flex flex-col items-center gap-2" data-testid={`scorecard-${label.toLowerCase()}`}>
+            <span className="text-xs sm:text-sm text-slate-500 font-display font-semibold tracking-wide uppercase">{label}</span>
+            <div className="relative">
+              <div className="w-14 h-20 sm:w-16 sm:h-24 rounded-lg bg-white border border-slate-300 shadow-sm flex items-center justify-center rotate-[-8deg] absolute -left-2 sm:-left-3 top-0">
+                <span className={`suit-symbol text-xl sm:text-2xl font-bold ${colorClass}`}>{suit}</span>
+              </div>
+              <div className="w-14 h-20 sm:w-16 sm:h-24 rounded-lg bg-white border border-slate-300 shadow-sm flex items-center justify-center rotate-[5deg] relative z-10">
+                <span className={`suit-symbol text-xl sm:text-2xl font-bold ${colorClass}`}>{suit}</span>
+              </div>
+            </div>
+            <span className={`text-2xl sm:text-3xl font-display font-bold ${colorClass} suit-symbol`}>{score}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
