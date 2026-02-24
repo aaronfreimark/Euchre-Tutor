@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { SUITS, type Suit, getRankings, getSuitColor, getSuitSymbol } from "@/lib/euchre";
+import { SUITS, type Suit, type Rank, getRankings, getSuitColor, getSuitSymbol } from "@/lib/euchre";
 import type { CardDef } from "@/lib/euchre";
 import { Crown, Star } from "lucide-react";
 
@@ -121,30 +121,39 @@ export default function Home() {
             Off-Suits
           </h2>
 
-          <div className="space-y-3">
-            {rankings.offSuits.map((os) => (
-              <div
-                key={os.suit}
-                className="bg-white/50 border border-slate-200/60 rounded-lg p-3 sm:p-4"
-                data-testid={`section-offsuit-${os.suit.toLowerCase()}`}
-              >
-                <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5">
-                  {os.cards.map((card, idx) => (
-                    <span key={card.id} className="flex items-center gap-1.5 sm:gap-2" data-testid={`card-offsuit-${os.suit.toLowerCase()}-${idx}`}>
-                      <CardChip card={card} />
-                      {idx < os.cards.length - 1 && (
-                        <span className="text-slate-300 text-xs select-none">&gt;</span>
-                      )}
-                    </span>
+          <div className="bg-white/50 border border-slate-200/60 rounded-xl p-3 sm:p-5">
+            {(() => {
+              const offRanks: Rank[] = ['A', 'K', 'Q', 'J', '10', '9'];
+              const leftSuit = rankings.offSuits.find(os => os.cards.length === 5)?.suit;
+              return (
+                <div className="grid gap-y-2 sm:gap-y-3" style={{ gridTemplateColumns: `repeat(${offRanks.length}, minmax(0, 1fr))` }}>
+                  {offRanks.map((rank) => (
+                    <div key={rank} className="text-center text-xs sm:text-sm font-display font-bold text-slate-400 pb-1 sm:pb-2 border-b border-slate-100">
+                      {rank}
+                    </div>
+                  ))}
+                  {rankings.offSuits.map((os) => (
+                    offRanks.map((rank) => {
+                      const card = os.cards.find(c => c.rank === rank);
+                      const isLeftBowerHole = !card && rank === 'J' && os.suit === leftSuit;
+                      return (
+                        <div
+                          key={`${os.suit}-${rank}`}
+                          className="flex items-center justify-center py-1 sm:py-1.5"
+                          data-testid={card ? `card-offsuit-${os.suit.toLowerCase()}-${rank.toLowerCase()}` : undefined}
+                        >
+                          {card ? (
+                            <CardChip card={card} />
+                          ) : isLeftBowerHole ? (
+                            <span className="text-[10px] sm:text-xs text-slate-300 italic">L.B.</span>
+                          ) : null}
+                        </div>
+                      );
+                    })
                   ))}
                 </div>
-                {os.cards.length === 5 && (
-                  <p className="text-[11px] sm:text-xs text-slate-400 italic mt-2">
-                    Jack is the Left Bower in trump
-                  </p>
-                )}
-              </div>
-            ))}
+              );
+            })()}
           </div>
         </section>
       </div>
