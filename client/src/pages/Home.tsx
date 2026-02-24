@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { SUITS, type Suit, type Rank, getRankings, getSuitColor, getSuitSymbol } from "@/lib/euchre";
 import type { CardDef } from "@/lib/euchre";
+import { SuitIcon } from "@/components/SuitIcon";
 function CardChip({ card }: { card: CardDef }) {
   const isRed = card.color === 'red';
   const symbol = getSuitSymbol(card.suit);
@@ -56,7 +57,7 @@ export default function Home() {
                         : 'text-suit-black border border-slate-100 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100')}
                 `}
               >
-                <span className={`text-lg sm:text-xl ${isActive ? 'text-white' : ''}`}>{symbol}</span>
+                <SuitIcon suit={suit} className={`w-5 h-5 sm:w-6 sm:h-6 ${isActive ? 'text-white' : ''}`} />
                 <span className="hidden sm:inline text-sm">{suit}</span>
               </button>
             );
