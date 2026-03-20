@@ -41,7 +41,7 @@ export default function Home() {
                 data-testid={`button-suit-${suit.toLowerCase()}`}
                 onClick={() => setTrump(suit)}
                 className={`
-                  relative flex-1 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5
+                  relative flex-1 px-2 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5
                   transition-all duration-200 outline-none font-display font-bold text-base sm:text-lg
                   cursor-pointer select-none
                   ${isActive
@@ -54,7 +54,7 @@ export default function Home() {
                 `}
               >
                 <span className="text-lg sm:text-xl suit-symbol">{getSuitSymbol(suit)}</span>
-                <span className="hidden sm:inline text-sm">{suit}</span>
+                <span className="text-[10px] sm:text-sm leading-none">{suit}</span>
               </button>
             );
           })}
