@@ -9,8 +9,7 @@ Select a trump suit and see how the card hierarchy shifts — including the **Ri
 ## Tech Stack
 
 - **Frontend**: React 18 + TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion
-- **Backend**: Express on Node.js
-- **Database**: PostgreSQL with Drizzle ORM
+- **Backend**: Express on Node.js (serves the app)
 
 ## Running Locally
 
